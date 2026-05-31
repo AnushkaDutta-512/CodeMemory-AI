@@ -54,7 +54,17 @@ class RepoAnalyzer:
                 continue
             
             doc_lower = documents[i].lower()
-            score = sum(1 for term in query_terms if term in doc_lower)
+            priority = metadatas[i].get(
+    "priority",
+    0
+)
+
+            keyword_score = sum(
+                1 for term in query_terms
+                if term in doc_lower
+            )
+
+            score = keyword_score + (priority * 3)
             scored_docs.append({
                 "score": score,
                 "source": metadatas[i]["source"],

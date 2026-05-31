@@ -6,16 +6,33 @@ IGNORE_FOLDERS = [
     "venv",
     "__pycache__",
     "build",
-    "dist"
+    "dist",
+    "coverage",
+    ".next",
+    ".turbo",
+    ".idea",
+    ".vscode",
+    "tests",
+    "test",
+    "mock",
+    "fixtures"
 ]
 
 VALID_EXTENSIONS = [
     ".py",
     ".js",
     ".ts",
+    ".tsx",
+    ".jsx",
     ".java",
+    ".go",
+    ".rs",
+    ".cpp",
+    ".c",
     ".md",
-    ".json"
+    ".json",
+    ".yaml",
+    ".yml"
 ]
 
 
@@ -45,11 +62,30 @@ def read_repository(repo_path):
                     ) as f:
 
                         content = f.read()
+                        priority = 0
+
+                        important_keywords = [
+                            "app",
+                            "main",
+                            "route",
+                            "api",
+                            "model",
+                            "controller",
+                            "service",
+                            "auth"
+                        ]
+
+                        for keyword in important_keywords:
+
+                            if keyword in full_path.lower():
+
+                                priority += 1
 
                         all_files.append({
-                            "path": full_path,
-                            "content": content
-                        })
+    "path": full_path,
+    "content": content,
+    "priority": priority
+})
 
                 except Exception as e:
                     print(f"Error reading {full_path}: {e}")

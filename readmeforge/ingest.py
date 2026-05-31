@@ -22,6 +22,11 @@ def ingest_repository(repo_path):
 
         content = file["content"]
 
+        priority = file.get(
+            "priority",
+            0
+        )
+
         chunks = chunk_text(content)
 
         for chunk in chunks:
@@ -37,10 +42,11 @@ def ingest_repository(repo_path):
                     documents=[chunk],
                     embeddings=[embedding.tolist()],
                     metadatas=[
-                        {
-                            "source": file_path
-                        }
-                    ]
+    {
+        "source": file_path,
+        "priority": priority
+    }
+]
                 )
                 print(collection.count())
                 total_chunks += 1
