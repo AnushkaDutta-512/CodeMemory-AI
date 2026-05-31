@@ -100,15 +100,20 @@
   margin: 0 auto;
   padding: 0;
   border-radius: 24px;
+  position: relative;
+  overflow: hidden;
 }
-
 .chat-input {
   width: 100%;
   background: transparent;
   border: none;
+  outline: none;
   padding: 1rem 3.5rem 1rem 1.5rem;
   color: var(--text-primary);
   font-size: 1rem;
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
 }
 
 .send-btn {
@@ -121,6 +126,12 @@
   align-items: center;
   justify-content: center;
   transition: all var(--transition-fast);
+
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
 }
 
 .send-btn:hover:not(:disabled) {

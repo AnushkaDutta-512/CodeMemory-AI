@@ -38,8 +38,8 @@ const ChatMessage = ({ message, isBot }) => {
         </div>
         
         {isBot ? (
-          <ReactMarkdown
-            className="markdown-body"
+          <div className="markdown-body">
+           <ReactMarkdown
             components={{
               code({node, inline, className, children, ...props}) {
                 const match = /language-(\w+)/.exec(className || '')
@@ -69,6 +69,7 @@ const ChatMessage = ({ message, isBot }) => {
           >
             {message}
           </ReactMarkdown>
+          </div>
         ) : (
           <p className="user-text">{message}</p>
         )}
@@ -153,7 +154,7 @@ const Chat = () => {
           <input
             type="text"
             className="chat-input"
-            placeholder={repoUrl ? "Ask a question about the code..." : "Please set a repository URL in Dashboard first"}
+            placeholder={repoUrl ? "Ask a question about the code..." : "   Please set a repository URL in Dashboard first"}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             disabled={isLoading || !repoUrl}
