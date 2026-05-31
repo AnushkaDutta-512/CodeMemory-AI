@@ -1,13 +1,12 @@
-from openai import OpenAI
+from groq import Groq
 from dotenv import load_dotenv
 
 import os
 
 load_dotenv()
 
-client = OpenAI(
-    api_key=os.getenv("GROQ_API_KEY"),
-    base_url="https://api.groq.com/openai/v1"
+client = Groq(
+    api_key=os.getenv("GROQ_API_KEY")
 )
 
 
@@ -16,17 +15,7 @@ def ask_llm(context, question):
     prompt = f"""
 You are a senior software engineer analyzing a repository.
 
-Use the repository context carefully.
-
-Prioritize:
-- implementation files
-- actual source code
-- architecture-related files
-
-Avoid depending mainly on:
-- test files
-- mock files
-- examples
+Use repository context carefully.
 
 REPOSITORY CONTEXT:
 {context}
@@ -37,9 +26,9 @@ QUESTION:
 Provide:
 1. direct answer
 2. relevant files
-3. technical explanation
-4. concise architecture understanding
+3. concise technical explanation
 """
+
     response = client.chat.completions.create(
 
         model="llama-3.3-70b-versatile",
@@ -49,9 +38,7 @@ Provide:
                 "role": "user",
                 "content": prompt
             }
-        ],
-
-        temperature=0.3
+        ]
     )
 
     return response.choices[0].message.content

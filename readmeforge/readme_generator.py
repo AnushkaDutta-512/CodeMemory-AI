@@ -2,7 +2,7 @@ from readmeforge.query import search_code
 from readmeforge.llm import ask_llm
 
 
-def generate_readme():
+def generate_readme(save=False):
 
     results = search_code(
         "Explain this repository architecture and purpose"
@@ -40,6 +40,8 @@ Include:
 6. Usage
 7. Architecture summary
 
+Write it in professional GitHub README format.
+
 REPOSITORY CONTEXT:
 {context}
 """
@@ -48,5 +50,15 @@ REPOSITORY CONTEXT:
         context,
         prompt
     )
+
+    if save:
+
+        with open(
+            "README_GENERATED.md",
+            "w",
+            encoding="utf-8"
+        ) as file:
+
+            file.write(readme)
 
     return readme

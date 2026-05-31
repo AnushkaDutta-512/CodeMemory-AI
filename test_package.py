@@ -7,6 +7,8 @@ repo = RepoAnalyzer(
 
 repo.ingest()
 
-readme = repo.generate_readme()
+readme = repo.generate_readme(
+    save=True
+)
 
 print(readme)
