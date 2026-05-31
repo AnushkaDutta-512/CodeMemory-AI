@@ -4,7 +4,7 @@ from readmeforge.query import search_code
 from readmeforge.llm import ask_llm
 from readmeforge.readme_generator import generate_readme
 import os
-
+from readmeforge.architecture import analyze_architecture
 class RepoAnalyzer:
 
     def __init__(self, repo_url):
@@ -31,6 +31,7 @@ class RepoAnalyzer:
             print("Repository already embedded. Skipping ingestion.")
 
         print("Repository ready!")
+        
 
         def ask(self, question):
 
@@ -68,3 +69,6 @@ class RepoAnalyzer:
                     self.repo_path,
                     save
 )
+    def analyze_architecture(self):
+
+            return analyze_architecture()
