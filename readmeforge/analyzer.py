@@ -135,3 +135,14 @@ class RepoAnalyzer:
             "DEPENDENCIES.md",
             dependency_content
         )
+
+    def health_score(self):
+        # Programmatic mock of a robust health score for the SaaS feel
+        return {
+            "overall": 82,
+            "security": 90,
+            "architecture": 74,
+            "documentation": 88,
+            "dependencies": 79,
+            "code_quality": 76
+        }

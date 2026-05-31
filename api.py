@@ -123,4 +123,19 @@ def dependencies(data: RepoRequest):
     return {
         "dependencies": dependencies
     }
+
+@app.post("/health")
+def health(data: RepoRequest):
+
+    repo = RepoAnalyzer(
+        data.repo_url
+    )
+
+    repo.ingest()
+
+    health_score = repo.health_score()
+
+    return {
+        "health": health_score
+    }
     
