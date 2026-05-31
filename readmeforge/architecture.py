@@ -5,7 +5,17 @@ from readmeforge.llm import ask_llm
 def analyze_architecture():
 
     results = search_code(
-    "Flask Python application architecture routes authentication database"
+   """
+application architecture
+backend structure
+frontend structure
+API routes
+authentication
+database models
+services
+controllers
+dependencies
+"""
 )
 
     documents = results["documents"][0]
@@ -33,7 +43,13 @@ Include the following sections:
 4. Authentication Flow (if any)
 5. Database & Models
 6. Key Modules & Services
-
+IMPORTANT:
+- Generate a Mermaid architecture diagram
+- Include API flow if APIs exist
+- Include authentication flow if detected
+- Include database relationships if present
+- Include module/service relationships
+- Use clean Mermaid syntax
 CRITICAL REQUIREMENT:
 You MUST generate a Mermaid flow diagram illustrating the system architecture (e.g., Frontend --> Backend/API --> Database). Enclose the Mermaid code in standard markdown code blocks with the language set to `mermaid`.
 Example:
