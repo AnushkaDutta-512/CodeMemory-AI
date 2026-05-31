@@ -1,4 +1,6 @@
-# ReadmeForge
+# CodeMemoryAI
+
+[![PyPI version](https://img.shields.io/pypi/v/codememoryai.svg)](https://pypi.org/project/codememoryai/)
 
 AI-powered GitHub repository analyzer and README generator.
 
