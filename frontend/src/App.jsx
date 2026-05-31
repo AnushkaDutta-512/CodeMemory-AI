@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Sidebar from './components/Sidebar';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
@@ -10,6 +11,7 @@ import './App.css';
 function App() {
   return (
     <Router>
+      <Toaster position="top-right" toastOptions={{ className: 'glass-toast' }} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         

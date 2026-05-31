@@ -44,29 +44,43 @@ class RepoAnalyzer:
         documents = results["documents"][0]
         metadatas = results["metadatas"][0]
 
-        context = ""
+        # Filter and rank chunks based on basic keyword overlap
+        query_terms = set(question.lower().split())
+        scored_docs = []
 
         for i in range(len(documents)):
-
-            source = metadatas[i]["source"]
-
-            if "test" in source.lower():
+            source = metadatas[i]["source"].lower()
+            if any(ignore in source for ignore in ["test", "spec", "mock", "fixture"]):
                 continue
+            
+            doc_lower = documents[i].lower()
+            score = sum(1 for term in query_terms if term in doc_lower)
+            scored_docs.append({
+                "score": score,
+                "source": metadatas[i]["source"],
+                "content": documents[i]
+            })
 
+        # Sort by score descending and take top 5 for context
+        scored_docs.sort(key=lambda x: x["score"], reverse=True)
+        top_docs = scored_docs[:5]
+
+        context = ""
+        for doc in top_docs:
             context += f"""
     FILE:
-    {metadatas[i]["source"]}
+    {doc["source"]}
 
     CODE:
-    {documents[i]}
+    {doc["content"]}
     """
 
-            answer = ask_llm(
-                context,
-                question
-            )
+        answer = ask_llm(
+            context,
+            question
+        )
 
-            return answer
+        return answer
     def generate_readme(self,save=False):
 
         return generate_readme(

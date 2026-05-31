@@ -3,6 +3,7 @@ import { Send, User, Bot, Loader2, Copy, Check } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { toast } from 'react-hot-toast';
 import { useAppContext } from '../context/AppContext';
 import api from '../api';
 import './Chat.css';
@@ -13,6 +14,7 @@ const ChatMessage = ({ message, isBot }) => {
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
+    toast.success('Copied to clipboard!', { id: 'chat-copy' });
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -110,6 +112,7 @@ const Chat = () => {
       setMessages(prev => [...prev, { text: response.data.answer, isBot: true }]);
     } catch (error) {
       console.error('Error asking question:', error);
+      toast.error('Failed to get answer. Please check if backend is running.', { id: 'chat-error' });
       setMessages(prev => [...prev, { 
         text: "Sorry, I encountered an error while analyzing the repository. Please make sure the backend is running and the URL is correct.", 
         isBot: true 

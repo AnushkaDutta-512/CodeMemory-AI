@@ -4,6 +4,7 @@ import { FileText, Box, ShieldCheck, Package, AlertTriangle, Loader2, Download, 
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { toast } from 'react-hot-toast';
 import { useAppContext } from '../context/AppContext';
 import api from '../api';
 import './Reports.css';
@@ -54,6 +55,7 @@ const Reports = () => {
         }));
       } catch (error) {
         console.error(`Error fetching ${activeTab}:`, error);
+        toast.error(`Failed to fetch ${tabConfig.label}.`, { id: `error-${activeTab}` });
         setReportsData(prev => ({
           ...prev,
           [activeTab]: `# Error\n\nFailed to fetch ${tabConfig.label}. Please make sure the backend is running.`
@@ -75,6 +77,7 @@ const Reports = () => {
     if (content) {
       navigator.clipboard.writeText(content);
       setCopied(true);
+      toast.success('Markdown copied to clipboard!', { id: 'copy-success' });
       setTimeout(() => setCopied(false), 2000);
     }
   };
@@ -93,6 +96,7 @@ const Reports = () => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+    toast.success(`${tabConfig.label} exported!`, { id: 'download-success' });
   };
 
   if (!repoUrl) {

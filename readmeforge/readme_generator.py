@@ -37,24 +37,21 @@ CODE:
 """
 
     prompt = f"""
-Generate a professional README.md for this repository.
-
-Use the detected technologies carefully.
+Generate a highly professional, beautifully formatted README.md for this repository.
 
 DETECTED TECH STACK:
 {tech_stack}
 
-Include:
+Instructions:
+1. Detect any frameworks, APIs, and authentication systems used in the code.
+2. Include shields.io badges at the top for the detected languages/frameworks.
+3. Write a compelling project title and overview.
+4. List the key features clearly.
+5. Provide specific, step-by-step Installation and Setup commands inferred from the tech stack (e.g., `npm install`, `pip install -r requirements.txt`).
+6. Provide a Usage section with examples if applicable.
+7. Provide a concise Architecture summary.
 
-1. Project title
-2. Project overview
-3. Features
-4. Tech stack
-5. Installation instructions
-6. Usage
-7. Architecture summary
-
-Write in professional GitHub README format.
+Write in a professional, modern GitHub README format. Do NOT wrap the entire output in a markdown block, just output the raw markdown text.
 
 REPOSITORY CONTEXT:
 {context}

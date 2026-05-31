@@ -10,7 +10,7 @@ def search_code(query):
         query_embeddings=[
             query_embedding.tolist()
         ],
-        n_results=10
+        n_results=15
     )
 
     return results

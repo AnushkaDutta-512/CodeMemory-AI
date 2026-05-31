@@ -1,0 +1,120 @@
+.repository-health-section {
+  width: 100%;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+}
+
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.score-card:hover::before {
+  opacity: 1;
+}
+
+.score-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.circle-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-track {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.progress-ring-circle {
+  stroke-linecap: round;
+}
+
+/* Score Colors */
+.score-excellent {
+  stroke: #10b981; /* Emerald 500 */
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+}
+
+.score-good {
+  stroke: #3b82f6; /* Blue 500 */
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));
+}
+
+.score-warning {
+  stroke: #f59e0b; /* Amber 500 */
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.4));
+}
+
+.score-danger {
+  stroke: #ef4444; /* Red 500 */
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.4));
+}
+
+.score-value {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.badge-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}

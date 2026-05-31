@@ -24,16 +24,24 @@ CODE:
 """
 
     prompt = f"""
-Analyze this repository architecture.
+Analyze this repository architecture based on the provided context.
 
-Explain:
+Include the following sections:
+1. Overall Architecture Overview
+2. Backend Structure & Frameworks
+3. API Routes & Design
+4. Authentication Flow (if any)
+5. Database & Models
+6. Key Modules & Services
 
-1. Overall architecture
-2. Backend structure
-3. API structure
-4. Authentication flow
-5. Database usage
-6. Important modules
+CRITICAL REQUIREMENT:
+You MUST generate a Mermaid flow diagram illustrating the system architecture (e.g., Frontend --> Backend/API --> Database). Enclose the Mermaid code in standard markdown code blocks with the language set to `mermaid`.
+Example:
+```mermaid
+graph TD
+  Client --> API
+  API --> DB
+```
 
 REPOSITORY CONTEXT:
 {context}
