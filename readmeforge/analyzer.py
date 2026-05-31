@@ -105,3 +105,15 @@ class RepoAnalyzer:
         return security_scan(
             self.repo_path
         )
+    def export_security_report(self):
+
+        security = self.security_scan()
+
+        security_content = "\n".join(
+            security
+        )
+
+        export_report(
+            "SECURITY.md",
+            security_content
+        )

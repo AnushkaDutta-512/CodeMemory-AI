@@ -27,3 +27,4 @@ repo.export_dead_code_report()
 security = repo.security_scan()
 
 print(security)
+repo.export_security_report()
