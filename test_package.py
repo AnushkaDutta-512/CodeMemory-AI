@@ -28,3 +28,8 @@ security = repo.security_scan()
 
 print(security)
 repo.export_security_report()
+dependencies = repo.analyze_dependencies()
+
+print(dependencies)
+
+repo.export_dependency_report()

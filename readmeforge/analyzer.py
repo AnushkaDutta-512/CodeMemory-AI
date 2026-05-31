@@ -4,6 +4,7 @@ from readmeforge.query import search_code
 from readmeforge.llm import ask_llm
 from readmeforge.readme_generator import generate_readme
 import os
+from readmeforge.dependency_analyzer import analyze_dependencies
 from readmeforge.security import security_scan
 from readmeforge.exporter import export_report
 from readmeforge.dead_code import find_dead_code
@@ -116,4 +117,21 @@ class RepoAnalyzer:
         export_report(
             "SECURITY.md",
             security_content
+        )
+    def analyze_dependencies(self):
+
+        return analyze_dependencies(
+            self.repo_path
+        )
+    def export_dependency_report(self):
+
+        dependencies = self.analyze_dependencies()
+
+        dependency_content = "\n".join(
+            dependencies
+        )
+
+        export_report(
+            "DEPENDENCIES.md",
+            dependency_content
         )
