@@ -1,6 +1,6 @@
 from readmeforge.query import search_code
 from readmeforge.llm import ask_llm
-
+from readmeforge.tech_stack import detect_tech_stack
 
 def generate_readme(save=False):
 
@@ -12,6 +12,14 @@ def generate_readme(save=False):
     metadatas = results["metadatas"][0]
 
     context = ""
+
+    technologies = detect_tech_stack(
+        "repos/flask"
+    )
+
+    tech_stack = "\n".join(
+        [f"- {tech}" for tech in technologies]
+    )
 
     for i in range(len(documents)):
 
@@ -29,9 +37,15 @@ CODE:
 """
 
     prompt = f"""
-Generate a professional GitHub README.md for this repository.
+Generate a professional README.md for this repository.
+
+Use the detected technologies carefully.
+
+DETECTED TECH STACK:
+{tech_stack}
 
 Include:
+
 1. Project title
 2. Project overview
 3. Features
@@ -40,12 +54,13 @@ Include:
 6. Usage
 7. Architecture summary
 
-Write it in professional GitHub README format.
+Write in professional GitHub README format.
 
 REPOSITORY CONTEXT:
 {context}
 """
 
+   
     readme = ask_llm(
         context,
         prompt
