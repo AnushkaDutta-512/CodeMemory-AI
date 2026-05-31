@@ -37,23 +37,23 @@ class RepoAnalyzer:
         print("Repository ready!")
         
 
-        def ask(self, question):
+    def ask(self, question):
 
-            results = search_code(question)
+        results = search_code(question)
 
-            documents = results["documents"][0]
-            metadatas = results["metadatas"][0]
+        documents = results["documents"][0]
+        metadatas = results["metadatas"][0]
 
-            context = ""
+        context = ""
 
-            for i in range(len(documents)):
+        for i in range(len(documents)):
 
-                source = metadatas[i]["source"]
+            source = metadatas[i]["source"]
 
-                if "test" in source.lower():
-                    continue
+            if "test" in source.lower():
+                continue
 
-                context += f"""
+            context += f"""
     FILE:
     {metadatas[i]["source"]}
 
