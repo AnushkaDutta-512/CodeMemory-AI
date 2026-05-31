@@ -4,6 +4,7 @@ from readmeforge.query import search_code
 from readmeforge.llm import ask_llm
 from readmeforge.readme_generator import generate_readme
 import os
+from readmeforge.exporter import export_report
 from readmeforge.dead_code import find_dead_code
 from readmeforge.architecture import analyze_architecture
 class RepoAnalyzer:
@@ -77,4 +78,24 @@ class RepoAnalyzer:
 
         return find_dead_code(
             self.repo_path
+        )
+    def export_architecture_report(self):
+
+        architecture = self.analyze_architecture()
+
+        export_report(
+            "ARCHITECTURE.md",
+            architecture
+        )
+
+
+    def export_dead_code_report(self):
+
+        dead = self.find_dead_code()
+
+        dead_content = "\n".join(dead)
+
+        export_report(
+            "DEADCODE.md",
+            dead_content
         )

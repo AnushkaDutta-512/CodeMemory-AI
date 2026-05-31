@@ -20,3 +20,7 @@ print(architecture)
 dead = repo.find_dead_code()
 
 print(dead)
+
+repo.export_architecture_report()
+
+repo.export_dead_code_report()
