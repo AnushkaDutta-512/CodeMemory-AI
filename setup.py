@@ -1,0 +1,19 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="readmeforge",
+    version="0.1.0",
+    packages=find_packages(),
+    install_requires=[
+        "sentence-transformers",
+        "chromadb",
+        "gitpython",
+        "python-dotenv",
+        "groq",
+        "streamlit"
+    ],
+    author="Anushka Dutta",
+    description="AI-powered GitHub repository analyzer and README generator",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+)
