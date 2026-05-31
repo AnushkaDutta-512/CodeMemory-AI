@@ -6,25 +6,35 @@ AI-powered GitHub repository analyzer and README generator.
 
 ## Features
 
-* AI repository Q&A
+* AI-powered repository Q&A
 * Semantic code search
 * Automatic README generation
+* Architecture analysis
+* Dead code detection
+* Automated report exporting
 * Tech stack detection
-* Repository architecture understanding
+* CLI support
+* PyPI package support
 
 ## Installation
 
 ```bash
-pip install readmeforge
+pip install codememoryai
 ```
 
-## Usage
+## CLI Usage
+
+```bash
+python main.py
+```
+
+## Example Usage
 
 ```python
 from readmeforge import RepoAnalyzer
 
 repo = RepoAnalyzer(
-    "https://github.com/user/repository"
+    "https://github.com/pallets/flask"
 )
 
 repo.ingest()
@@ -36,13 +46,11 @@ answer = repo.ask(
 print(answer)
 ```
 
-## README Generation
+## Reports Generated
 
-```python
-readme = repo.generate_readme(
-    save=True
-)
-```
+* README.md
+* ARCHITECTURE.md
+* DEADCODE.md
 
 ## CLI Usage
 
