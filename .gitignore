@@ -4,3 +4,7 @@ vector_db/
 __pycache__/
 *.pyc
 .env
+dist/
+build/
+*.egg-info/
+README_GENERATED.md
