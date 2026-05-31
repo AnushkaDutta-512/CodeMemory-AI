@@ -5,8 +5,8 @@ from readmeforge.llm import ask_llm
 def analyze_architecture():
 
     results = search_code(
-        "Explain the architecture of this repository"
-    )
+    "Flask Python application architecture routes authentication database"
+)
 
     documents = results["documents"][0]
     metadatas = results["metadatas"][0]
