@@ -138,4 +138,13 @@ def health(data: RepoRequest):
     return {
         "health": health_score
     }
-    
+@app.post("/health")
+def health(data: RepoRequest):
+
+    repo = RepoAnalyzer(
+        data.repo_url
+    )
+
+    repo.ingest()
+
+    return repo.health_score()

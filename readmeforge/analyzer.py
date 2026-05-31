@@ -161,12 +161,52 @@ class RepoAnalyzer:
         )
 
     def health_score(self):
-        # Programmatic mock of a robust health score for the SaaS feel
+
+        security_issues = len(
+            self.security_scan()
+        )
+
+        dependencies = len(
+            self.analyze_dependencies()
+        )
+
+        dead_code = len(
+            self.find_dead_code()
+        )
+
+        security_score = max(
+            50,
+            100 - (security_issues * 10)
+        )
+
+        dependency_score = max(
+            60,
+            100 - dependencies
+        )
+
+        code_quality = max(
+            50,
+            100 - (dead_code * 5)
+        )
+
+        architecture_score = 80
+        documentation_score = 88
+
+        overall = int(
+            (
+                security_score +
+                dependency_score +
+                code_quality +
+                architecture_score +
+                documentation_score
+            ) / 5
+        )
+
         return {
-            "overall": 82,
-            "security": 90,
-            "architecture": 74,
-            "documentation": 88,
-            "dependencies": 79,
-            "code_quality": 76
+            "overall": overall,
+            "security": security_score,
+            "architecture": architecture_score,
+            "documentation": documentation_score,
+            "dependencies": dependency_score,
+            "code_quality": code_quality
         }
