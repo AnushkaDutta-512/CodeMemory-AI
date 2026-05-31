@@ -12,6 +12,11 @@ readme = repo.generate_readme(
 )
 
 print(readme)
+
 architecture = repo.analyze_architecture()
 
 print(architecture)
+
+dead = repo.find_dead_code()
+
+print(dead)

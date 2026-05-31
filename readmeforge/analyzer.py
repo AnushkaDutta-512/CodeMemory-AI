@@ -4,6 +4,7 @@ from readmeforge.query import search_code
 from readmeforge.llm import ask_llm
 from readmeforge.readme_generator import generate_readme
 import os
+from readmeforge.dead_code import find_dead_code
 from readmeforge.architecture import analyze_architecture
 class RepoAnalyzer:
 
@@ -72,3 +73,8 @@ class RepoAnalyzer:
     def analyze_architecture(self):
 
             return analyze_architecture()
+    def find_dead_code(self):
+
+        return find_dead_code(
+            self.repo_path
+        )
