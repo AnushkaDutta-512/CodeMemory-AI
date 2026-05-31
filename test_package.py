@@ -24,3 +24,6 @@ print(dead)
 repo.export_architecture_report()
 
 repo.export_dead_code_report()
+security = repo.security_scan()
+
+print(security)

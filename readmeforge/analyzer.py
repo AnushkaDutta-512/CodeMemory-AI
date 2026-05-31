@@ -4,6 +4,7 @@ from readmeforge.query import search_code
 from readmeforge.llm import ask_llm
 from readmeforge.readme_generator import generate_readme
 import os
+from readmeforge.security import security_scan
 from readmeforge.exporter import export_report
 from readmeforge.dead_code import find_dead_code
 from readmeforge.architecture import analyze_architecture
@@ -98,4 +99,9 @@ class RepoAnalyzer:
         export_report(
             "DEADCODE.md",
             dead_content
+        )
+    def security_scan(self):
+
+        return security_scan(
+            self.repo_path
         )
