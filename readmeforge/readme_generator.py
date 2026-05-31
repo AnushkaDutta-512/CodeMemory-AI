@@ -2,7 +2,7 @@ from readmeforge.query import search_code
 from readmeforge.llm import ask_llm
 from readmeforge.tech_stack import detect_tech_stack
 
-def generate_readme(save=False):
+def generate_readme(repo_path, save=False):
 
     results = search_code(
         "Explain this repository architecture and purpose"
@@ -14,7 +14,7 @@ def generate_readme(save=False):
     context = ""
 
     technologies = detect_tech_stack(
-        "repos/flask"
+        repo_path
     )
 
     tech_stack = "\n".join(

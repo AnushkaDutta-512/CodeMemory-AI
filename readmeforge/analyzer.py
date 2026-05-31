@@ -64,4 +64,7 @@ class RepoAnalyzer:
             return answer
     def generate_readme(self,save=False):
 
-        return generate_readme(save)
+        return generate_readme(
+                    self.repo_path,
+                    save
+)
